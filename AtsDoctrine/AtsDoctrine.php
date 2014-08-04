@@ -59,12 +59,12 @@ class AtsDoctrine
             $this->lastHeartbeatTime[$connectionName] = time();
         }
 
-        if (in_array($connectionName, array_keys($this->conn)) && $this->conn[$connectionName] instanceof Doctrine\DBAL\Connection && (time() - $this->lastHeartbeatTime[$connectionName] > $this->heartbeatTimeout)) {
+        if (in_array($connectionName, array_keys($this->conn)) && $this->conn[$connectionName] instanceof \Doctrine\DBAL\Connection && (time() - $this->lastHeartbeatTime[$connectionName] > $this->heartbeatTimeout)) {
             $this->lastHeartbeatTime[$connectionName] = time();
             $this->conn[$connectionName] = NULL;
         }
 
-        if (!$newConnection && in_array($connectionName, array_keys($this->conn)) && $this->conn[$connectionName] instanceof Doctrine\DBAL\Connection) {
+        if (!$newConnection && in_array($connectionName, array_keys($this->conn)) && $this->conn[$connectionName] instanceof \Doctrine\DBAL\Connection) {
             //do nothing
         } else {
             $configureation   = new \Doctrine\DBAL\Configuration();
