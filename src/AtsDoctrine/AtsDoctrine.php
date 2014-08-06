@@ -2,13 +2,13 @@
 namespace HMinng\DBLibrary\AtsDoctrine;
 
 use Doctrine\Common\ClassLoader;
-use Illuminate\Support\Facades\Config;
+use HMinng\DBLibrary\AtsConfig\AtsConfig;
 
 class AtsDoctrine
 {
     protected static $instance   = NULL;
     protected static $DBALLoaded = FALSE;
-    const DEFAULT_CONNECTION_NAME = 'mysql';
+    const DEFAULT_CONNECTION_NAME = 'master';
     /**
      * 当前默认数据库连接名
      * @var string
@@ -27,7 +27,7 @@ class AtsDoctrine
     protected function __construct()
     {
         $this->connectionName = self::DEFAULT_CONNECTION_NAME;
-        $this->databaseConfigures = $this->fieldMapping();
+        $this->databaseConfigures = AtsConfig::configures();
     }
 
     /**
@@ -110,32 +110,6 @@ class AtsDoctrine
     {
         $this->setCurrentConnection(self::DEFAULT_CONNECTION_NAME);
         return $this;
-    }
-
-  
-    private static function fieldMapping()
-    {
-    	$mapping = array(
-    		'driver' => 'driver',
-    		'host'      => 'host',
-    		'database'  => 'dbname',
-    		'username'  => 'user',
-    		'password'  => 'password',
-    		'charset'   => 'charset',
-    		'port'  => 'port'
-    	);
-    	
-    	$database = Config::get('database.connections');
-    	
-    	$fields = array();
-    	foreach ($database[self::DEFAULT_CONNECTION_NAME] as $key => $value)
-    	{
-    		if (array_key_exists($key, $mapping)) {
-    			$fields[self::DEFAULT_CONNECTION_NAME][$mapping[$key]] = $value;
-    		}
-    	}
-    	
-    	return $fields;
     }
 
     /**
