@@ -7,7 +7,7 @@ class AtsConfig
 {
 	public static function configures()
 	{
-	    $configures = Yaml::parse(APPLICATION_PATH . '/../application/library/config/AtsConfig.yml');
+	    $configures = Yaml::parse(APPLICATION_PATH . '/../application/library/config/databases.yml');
 	    
 	    return $configures['databases'];
 	}
