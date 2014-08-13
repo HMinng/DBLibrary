@@ -87,7 +87,7 @@ class AtsDoctrine
     public function setCurrentConnection($connectionName)
     {
         if (!$this->isValidConnectionName($connectionName)) {
-            throw new \AtsException('找不到数据库连接的配置参数，请检查', \AtsMessages::DBLIBRARY_ERROR);
+            throw new \AtsException('找不到数据库连接的配置参数，请检查');
         }
         $this->connectionName = $connectionName;
         return $this;
@@ -140,11 +140,11 @@ class AtsDoctrine
     protected function getValidConnectionParams($connectionName)
     {
         if (count($this->databaseConfigures) < 1) {
-            throw new \AtsException('找不到数据库配置参数，请检查', \AtsMessages::DBLIBRARY_ERROR);
+            throw new \AtsException('找不到数据库配置参数，请检查');
         }
 
         if (!$this->isValidConnectionName($connectionName)) {
-           throw new \AtsException('找不到数据库配置参数，请检查', \AtsMessages::DBLIBRARY_ERROR);
+           throw new \AtsException('找不到数据库配置参数，请检查');
         }
 
         return $this->databaseConfigures[$connectionName];

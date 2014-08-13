@@ -93,43 +93,43 @@ class AtsDaoValidation
             {
                 case self::DAO_TABLE:
                     if (self::DAO_TABLE_NOT_EXISTS == $this->validationTable()) {
-                        throw new \AtsException("DAO 层出错：Table ('$this->value') 不存在", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Table ('$this->value') 不存在");
                     }
                     break;
                 case self::DAO_PRIMARY:
                     if (self::DAO_PRIMARY_PARAM_WRONG == $this->validationPrimary()) {
-                        throw new \AtsException("DAO 层出错：Primary ('$this->value') 不合法", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Primary ('$this->value') 不合法");
                     }
                     break;
                 case self::DAO_FIELD:
                     if (self::DAO_FIELD_NOT_ARRAY == $this->validationField()) {
-                        throw new \AtsException("DAO 层出错：Field 不是数组", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Field 不是数组");
                     } elseif (self::DAO_FIELD_IS_EMPTY == $this->validationField()) {
-                        throw new \AtsException("DAO 层出错：Field 数组为空", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Field 数组为空");
                     }
                     break;
                 case self::DAO_WHERE:
                     if (self::DAO_WHERE_AND_HAVING_UNDEFINED == $this->validationWhereAndHaving()) {
-                        throw new \AtsException("DAO 层出错：Where 条件参数未定义", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Where 条件参数未定义");
                     } elseif (self::DAO_WHERE_AND_HAVING_PARAM_WRONG == $this->validationWhereAndHaving()) {
-                        throw new \AtsException("DAO 层出错：Where 条件参数不合法", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Where 条件参数不合法");
                     }
                     break;
                 case self::DAO_LIMIT:
                     if (self::DAO_LIMIT_AND_OFFSET_PARAM_WRONG == $this->validationLimitAndOffset()) {
-                        throw new \AtsException("DAO 层出错：Limit ('$this->value') 值不合法", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Limit ('$this->value') 值不合法");
                     }
                     break;
                 case self::DAO_HAVING:
                     if (self::DAO_WHERE_AND_HAVING_UNDEFINED == $this->validationWhereAndHaving()) {
-                        throw new \AtsException("DAO 层出错：Where 条件参数未定义", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Where 条件参数未定义");
                     } elseif (self::DAO_WHERE_AND_HAVING_PARAM_WRONG == $this->validationWhereAndHaving()) {
-                        throw new \AtsException("DAO 层出错：Where 条件参数不合法", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Where 条件参数不合法");
                     }
                     break;
                 case self::DAO_OFFSET:
                     if (self::DAO_LIMIT_AND_OFFSET_PARAM_WRONG == $this->validationLimitAndOffset()) {
-                        throw new \AtsException("DAO 层出错：Offset ('$this->value') 值不合法", \AtsMessages::DBLIBRARY_ERROR);
+                        throw new \AtsException("DAO 层出错：Offset ('$this->value') 值不合法");
                     }
                     break;
             }
