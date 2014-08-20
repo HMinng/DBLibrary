@@ -3,6 +3,7 @@ namespace HMinng\DBLibrary\AtsDAO;
 
 use HMinng\DBLibrary\AtsQuery\AtsQuery;
 use HMinng\DBLibrary\AtsValidator\AtsDaoValidation;
+use HMinng\DBLibrary\AtsDoctrine\AtsDoctrine;
 
 class AtsDao
 {
@@ -42,7 +43,7 @@ class AtsDao
      * @param string $select
      * @return array
      */
-    public function get($where, $select = '*')
+    public function get($where, $select = '*', $lock = '')
     {
         $this->setValidator(array(
             AtsDaoValidation::DAO_WHERE => array('value' => $where),
@@ -51,12 +52,15 @@ class AtsDao
         $q = $this->atsQuery->create()
             ->from($this->table, 't')
             ->select($select)
-            ->where($where['key'])
-            ->setParameters($where['value']);
+            ->where($where['key']);
 
-        array_push($this->sqlQueries, $q->getSQL());
-      
-        return $q->execute()->fetch(\PDO::FETCH_ASSOC);
+        $sql = $q->getSQL() . ' ' . $lock;
+        
+        array_push($this->sqlQueries, $sql);
+        
+        $statement = $this->atsQuery->executeQuery($sql, $where['value']);
+        
+        return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**

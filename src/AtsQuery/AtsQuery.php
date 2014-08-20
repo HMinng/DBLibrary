@@ -78,7 +78,7 @@ class AtsQuery
      * @param array $types
      * @return \Doctrine\DBAL\Driver\Statement
      */
-    public function executeQuery($query, $params, $types = array())
+    public function executeQuery($query, $params = array(), $types = array())
     {
         return $this->getConnection()->executeQuery($query, $params, $types);
     }
