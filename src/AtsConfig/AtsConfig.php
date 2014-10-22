@@ -8,7 +8,9 @@ class AtsConfig
 	public static function configures()
 	{
 	    $configures = Yaml::parse(APPLICATION_PATH . '/../conf/custom/Databases.yml');
-	    
-	    return $configures['databases'];
+
+        $env = defined(APPLICATION_PATH) ? APPLICATION_ENV: 'product';
+
+	    return $configures['databases'][$env];
 	}
 }

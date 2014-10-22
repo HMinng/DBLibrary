@@ -17,6 +17,8 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $where
+     * @param array $params
      * @return AtsQueryWhere
      */
     public function where($where, $params = array())
@@ -33,6 +35,8 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $where
+     * @param array $params
      * @return AtsQueryWhere
      */
     public function andWhere($where, $params = array())
@@ -56,6 +60,8 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $where
+     * @param array $params
      * @return AtsQueryWhere
      */
     public function orWhere($where, $params = array())
@@ -74,6 +80,9 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $expr
+     * @param array $params
+     * @param bool $not
      * @return AtsQueryWhere
      */
     public function whereIn($expr, $params = array(), $not = false)
@@ -82,6 +91,9 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $expr
+     * @param array $params
+     * @param bool $not
      * @return AtsQueryWhere
      */
     public function andWhereIn($expr, $params = array(), $not = false)
@@ -99,6 +111,9 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $expr
+     * @param array $params
+     * @param bool $not
      * @return AtsQueryWhere
      */
     public function orWhereIn($expr, $params = array(), $not = false)
@@ -141,6 +156,8 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $expr
+     * @param array $params
      * @return AtsQueryWhere
      */
     public function whereNotIn($expr, $params = array())
@@ -149,6 +166,8 @@ class AtsQueryWhere
     }
 
     /**
+     * @param $expr
+     * @param array $params
      * @return AtsQueryWhere
      */
     public function andWhereNotIn($expr, $params = array())
