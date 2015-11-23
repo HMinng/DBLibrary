@@ -71,6 +71,7 @@ class AtsDoctrine
             $connectionParams = $this->getValidConnectionParams($connectionName);
 
             $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $configureation);
+
             $this->conn[$connectionName] = $conn;
             $this->conn[$connectionName]->executeQuery('SET NAMES UTF8');
             //$this->conn[$connectionName]->executeQuery('SET SESSION wait_timeout=900');
@@ -87,7 +88,7 @@ class AtsDoctrine
     public function setCurrentConnection($connectionName)
     {
         if (!$this->isValidConnectionName($connectionName)) {
-            throw new \AtsException('找不到数据库连接的配置参数，请检查');
+            throw new \Exception('找不到数据库连接的配置参数，请检查');
         }
         $this->connectionName = $connectionName;
         return $this;
@@ -140,11 +141,11 @@ class AtsDoctrine
     protected function getValidConnectionParams($connectionName)
     {
         if (count($this->databaseConfigures) < 1) {
-            throw new \AtsException('找不到数据库配置参数，请检查');
+            throw new \Exception('找不到数据库配置参数，请检查');
         }
 
         if (!$this->isValidConnectionName($connectionName)) {
-           throw new \AtsException('找不到数据库配置参数，请检查');
+           throw new \Exception('找不到数据库配置参数，请检查');
         }
 
         return $this->databaseConfigures[$connectionName];

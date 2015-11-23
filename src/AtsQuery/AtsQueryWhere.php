@@ -136,7 +136,7 @@ class AtsQueryWhere
 
         // if there's no params, return (else we'll get a WHERE IN (), invalid SQL)
         if (count($params) == 0) {
-            throw new \AtsException('You must pass at least one parameter when using an IN() condition.');
+            throw new \Exception('You must pass at least one parameter when using an IN() condition.');
         }
 
         $a = array();
@@ -188,7 +188,7 @@ class AtsQueryWhere
     protected function _addWherePart($queryPart, $append = FALSE)
     {
         if ($queryPart === NULL) {
-            throw new \AtsException('Cannot define NULL as part of query when defining \'' . $queryPart . '\'.');
+            throw new \Exception('Cannot define NULL as part of query when defining \'' . $queryPart . '\'.');
         }
 
         if ($append) {

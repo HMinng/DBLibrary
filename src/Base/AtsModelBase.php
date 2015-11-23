@@ -67,7 +67,7 @@ abstract class AtsModelBase
         if (! $condition)
         {
             $message =  NULL === $message ? 'Service 层出错，请检查' : $message;
-            throw new \AtsException($message);
+            throw new Exception($message);
         }
     }
 
@@ -81,7 +81,7 @@ abstract class AtsModelBase
         if ($condition)
         {
             $message =  NULL === $message ? 'Service 层出错，请检查' : $message;
-           throw new \AtsException($message);
+           throw new Exception($message);
         }
     }
 }

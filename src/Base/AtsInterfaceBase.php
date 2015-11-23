@@ -23,7 +23,7 @@ abstract class AtsInterfaceBase
         if (! $condition)
         {
             $message =  NULL === $message ? 'Interface 层出错，请检查' : $message;
-            throw new \AtsException($message);
+            throw new Exception($message);
         }
     }
 
@@ -37,7 +37,7 @@ abstract class AtsInterfaceBase
         if ($condition)
         {
             $message =  NULL === $message ? 'Interface 层出错，请检查' : $message;
-            throw new \AtsException($message);
+            throw new Exception($message);
         }
     }
 }

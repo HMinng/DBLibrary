@@ -27,7 +27,7 @@ class AtsValidation
     public static function hasColumn($table, $column)
     {
         if (! self::hasTable($table)) {
-            throw new \AtsException("The table '$table' doesn't exitst.");
+            throw new \Exception("The table '$table' doesn't exitst.");
         }
 
         $q = AtsQuery::getInstance()->prepare("SHOW COLUMNS FROM $table LIKE :column");
