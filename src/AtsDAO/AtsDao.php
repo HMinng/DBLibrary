@@ -55,7 +55,7 @@ class AtsDao
             ->where($where['key']);
 
         $sql = $q->getSQL() . ' ' . $lock;
-        
+
         array_push($this->sqlQueries, $sql);
         
         $statement = $this->atsQuery->executeQuery($sql, $where['value']);
