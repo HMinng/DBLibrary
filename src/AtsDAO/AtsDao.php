@@ -157,6 +157,39 @@ class AtsDao
     }
 
     /**
+     * 返回字段和
+     * @param string $sum
+     * @param string $select
+     * @param array $where
+     * @param string $groupby
+     * @return array
+     */
+    public function sum($sum = null, $select = null, $where = array(), $groupby = NULL)
+    {
+        $this->setValidator(array(
+            AtsDaoValidation::DAO_WHERE => array('value' => $where)
+        ));
+
+        if ( ! is_null($select)) {
+            $select .= "sum($sum)";
+        } else {
+            $select = "sum($sum)";
+        }
+
+        $q = $this->atsQuery->create()
+            ->from($this->table, 't')
+            ->select($select);
+
+        $groupby && $q->groupBy($groupby);
+
+        $where && $q->where($where['key'])->setParameters($where['value']);
+
+        array_push($this->sqlQueries, $q->getSQL());
+
+        return $q->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
      * 检查记录是否存在
      * @param array $where
      * @return boolean returns true if the table rows exists, false otherwise.
