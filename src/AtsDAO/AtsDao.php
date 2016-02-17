@@ -171,9 +171,9 @@ class AtsDao
         ));
 
         if ( ! is_null($select)) {
-            $select .= ",sum($sum)";
+            $select .= ",sum($sum) as sum";
         } else {
-            $select = "sum($sum)";
+            $select = "sum($sum) as sum";
         }
 
         $q = $this->atsQuery->create()
