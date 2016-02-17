@@ -171,7 +171,7 @@ class AtsDao
         ));
 
         if ( ! is_null($select)) {
-            $select .= "sum($sum)";
+            $select .= ",sum($sum)";
         } else {
             $select = "sum($sum)";
         }
