@@ -91,10 +91,10 @@ class AtsDao
      * @param integer $limit
      * @param integer $offset
      * @param string $groupby
-     * @param array $having
+     * @param string $having
      * @return array
      */
-    public function gets($select = '*', $where = array(), $orderby = array(), $limit = NULL, $offset = NULL, $groupby = NULL, $having = array())
+    public function gets($select = '*', $where = array(), $orderby = array(), $limit = NULL, $offset = NULL, $groupby = NULL, $having = NULL)
     {
         $this->setValidator(array(
             AtsDaoValidation::DAO_WHERE  => array('value' => $where),
