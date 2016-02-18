@@ -164,7 +164,7 @@ class AtsDao
      * @param string $groupby
      * @return array
      */
-    public function sum($sum = null, $select = null, $where = array(), $groupby = NULL)
+    public function sum($sum = null, $select = null, $where = array(), $groupby = NULL , $having = NULL)
     {
         $this->setValidator(array(
             AtsDaoValidation::DAO_WHERE => array('value' => $where)
@@ -181,6 +181,7 @@ class AtsDao
             ->select($select);
 
         $groupby && $q->groupBy($groupby);
+        $having  && $q->having($having);
 
         $where && $q->where($where['key'])->setParameters($where['value']);
 
