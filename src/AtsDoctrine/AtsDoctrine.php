@@ -1,7 +1,6 @@
 <?php
 namespace HMinng\DBLibrary\AtsDoctrine;
 
-use Doctrine\Common\ClassLoader;
 use HMinng\DBLibrary\AtsConfig\AtsConfig;
 
 class AtsDoctrine
