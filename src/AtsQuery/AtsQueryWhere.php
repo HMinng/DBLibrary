@@ -205,17 +205,21 @@ class AtsQueryWhere
         $where   = NULL;
         $results = array();
 
-        foreach ($this->whereParts['where'] as $part) {
-            if (strpos($part, '?') !== FALSE) {
-                $where .= $part;
-            } else {
-                $where .= " $part ";
+        if ( array_key_exists('where',$this->whereParts) ) {
+            foreach ($this->whereParts['where'] as $part) {
+                if (strpos($part, '?') !== FALSE) {
+                    $where .= $part;
+                } else {
+                    $where .= " $part ";
+                }
             }
+
+            $results['value'] = $this->where;
+            $results['key'] = $where;
+
+            return $results;
         }
 
-        $results['value'] = $this->where;
-        $results['key'] = $where;
-
-        return $results;
+        return array();
     }
 }
