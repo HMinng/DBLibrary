@@ -18,6 +18,8 @@ class ModelInterfaceBase extends AtsInterfaceBase
      */
     private static $connectName;
     
+    private static $instance = null;
+    
     private final function __construct() { }
     
     private final function __clone() { }
@@ -29,7 +31,7 @@ class ModelInterfaceBase extends AtsInterfaceBase
         self::$table       = $table;
         self::$connectName = $connectName;
         
-        if (is_null(self::getInstance())) {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
         
